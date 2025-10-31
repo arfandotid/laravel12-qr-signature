@@ -21,6 +21,11 @@ class Index extends Component
     public $qrCodeDataUri = null;
     public $selectedSignature;
 
+    protected $listeners = [
+        'confirm-delete' => 'destroy',
+        'open-qr' => 'qrcode'
+    ];
+
     public function destroy($id)
     {
         //destroy
@@ -92,19 +97,6 @@ class Index extends Component
 
     public function render()
     {
-        $signatures = Signature::latest()->paginate(10);
-        if ($this->search) {
-            $signatures = Signature::where('nama_penandatangan', 'like', '%' . $this->search . '%')
-                ->orWhere('nomor_dokumen', 'like', '%' . $this->search . '%')
-                ->orWhere('tanggal', 'like', '%' . $this->search . '%')
-                ->orWhere('keterangan', 'like', '%' . $this->search . '%')
-                ->orWhere('status', 'like', '%' . $this->search . '%')
-                ->latest()
-                ->paginate(10);
-        }
-
-        return view('livewire.signature.index', [
-            'signatures' => $signatures,
-        ]);
+        return view('livewire.signature.index');
     }
 }
