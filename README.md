@@ -8,7 +8,7 @@ Aplikasi Tanda Tangan Elektronik Laravel 12 + Livewire Starter Kit
     NPM :
     <pre><code>npm install</code></pre>
 2.  Copy .env from example
-    <pre><code>copy .env.example .env</code></pre>
+    <pre><code>cp .env.example .env</code></pre>
 3.  Generate App Key
     <pre><code>php artisan key:generate</code></pre>
 4.  Create Database
