@@ -12,6 +12,10 @@ class Show extends Component
     public function mount($id)
     {
         $this->signature = Signature::find($id);
+
+        if ($this->signature === null) {
+            abort(404);
+        }
     }
 
     public function render()
